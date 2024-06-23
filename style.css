@@ -1,0 +1,11 @@
+body{
+    background-color: black;
+    
+}
+p{
+    display: flex;
+    text-align: center;
+    color: burlywood;
+    justify-content: center;
+    
+}
