@@ -25,9 +25,30 @@ function resultados(humanChoice, computerChoice) {
         (humanChoice === 'tijeras' && computerChoice === 'papel')
     ) {
         console.log('¡Ganaste!');
+        score('humano')
     } else {
         console.log('La PC gana');
+        score('computadora')
     }
+}
+
+
+
+
+//Para que funcionara el score tuve que hacer 2 variables que sean igual a 0 para sumarlos
+//despues hice la funcion score con valor de ganador para poder emplazarlo despues y para hacer el algoritmo
+//y despues mande a llamar a la funcion score en la funcion de resultados.
+let humano = 0;
+let computadora = 0;
+
+
+function score(ganador) {
+    if (ganador === 'humano') {
+        humano++;
+    } else if (ganador === 'computadora') {
+        computadora++;
+    }
+    console.log(`Humano: ${humano}, Computadora: ${computadora}`);
 }
 
 // Llamar a la función para iniciar el juego
