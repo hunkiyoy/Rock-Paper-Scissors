@@ -25,31 +25,35 @@ function resultados(humanChoice, computerChoice) {
         (humanChoice === 'tijeras' && computerChoice === 'papel')
     ) {
         console.log('¡Ganaste!');
-        score('humano')
+        score('humano');
     } else {
         console.log('La PC gana');
-        score('computadora')
+        score('computadora');
     }
 }
 
-
-
-
-//Para que funcionara el score tuve que hacer 2 variables que sean igual a 0 para sumarlos
-//despues hice la funcion score con valor de ganador para poder emplazarlo despues y para hacer el algoritmo
-//y despues mande a llamar a la funcion score en la funcion de resultados.
-let humano = 0;
-let computadora = 0;
-
+function getScores() {
+    return {
+        humano: parseInt(localStorage.getItem('humano') || '0', 10),
+        computadora: parseInt(localStorage.getItem('computadora') || '0', 10)
+    };
+}
 
 function score(ganador) {
+    const scores = getScores();
     if (ganador === 'humano') {
-        humano++;
+        scores.humano++;
     } else if (ganador === 'computadora') {
-        computadora++;
+        scores.computadora++;
     }
-    console.log(`Humano: ${humano}, Computadora: ${computadora}`);
+    localStorage.setItem('humano', scores.humano);
+    localStorage.setItem('computadora', scores.computadora);
+    console.log(`Humano: ${scores.humano}, Computadora: ${scores.computadora}`);
 }
+
+// Inicializa el puntaje al cargar la página
+const initialScores = getScores();
+console.log(`Humano: ${initialScores.humano}, Computadora: ${initialScores.computadora}`);
 
 // Llamar a la función para iniciar el juego
 getHumanChoice();
